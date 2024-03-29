@@ -22,7 +22,7 @@ class index:
         # 获取文件总行数
         if os.path.isfile("discourse.txt") == False:
             with open('discourse.txt', 'w') as f:
-                f.write("这是一条测试一言，请前往Python安装目录下的Lib\site-packages\\todaydiscourse\discourse.txt修改")
+                f.write("这是一条测试一言，请前往discourse.txt修改")
         with open("discourse.txt", 'r') as f:
             total_lines = sum(1 for line in f)
         # 生成一个随机的行号
