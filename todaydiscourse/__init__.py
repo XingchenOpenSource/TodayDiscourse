@@ -49,13 +49,27 @@ def start_server(port):
             with open(json_file_path, 'r') as json_file:
                 data = json.load(json_file)
             if self.path == '/':
-                core.handle_td_request(self, query_params)
+                self.send_response(500)
+                self.send_header('Content-type', 'application/text')
+                self.end_headers()
+                self.wfile.write("欢迎今日话语！您的调用方式错误。")
+            elif self.path == '/text':
+                self.send_response(200)
+                self.send_header('Content-type', 'application/text')
+                self.end_headers()
+                text = json.loads(core.handle_td_request(self, query_params)).get('content', 0)
+                self.wfile.write(text)
+            elif self.path == '/json':
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(core.handle_td_request(self, query_params))
             else:
                 response_data = {
                     'status': '404',
                     'msg': '失败'
                 }
-                self.send_response(200)
+                self.send_response(404)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode())

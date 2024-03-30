@@ -26,8 +26,4 @@ def handle_td_request(handler, query_params):
             'date': selected_data.get('date')
         }
 
-    handler.send_header('Content-type', 'application/json')
-    handler.end_headers()
-    handler.wfile.write(json.dumps(final_data, ensure_ascii=False).encode())
-    
-    # 不需要手动关闭文件，with语句会自动处理
+    return json.dumps(final_data, ensure_ascii=False).encode()
