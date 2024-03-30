@@ -4,7 +4,7 @@ import random
 
 current_file_path = os.path.abspath(__file__)
 current_directory = os.path.dirname(current_file_path)
-directory = os.path.join(current_directory, "TodayDiscourse")
+directory = os.path.join(current_directory, "discourse")
 
 def handle_td_request(handler, query_params):
     json_files = [file for file in os.listdir(directory) if file.endswith('.json')]
