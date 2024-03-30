@@ -53,6 +53,7 @@ def start_server(port):
                 self.send_header('Content-type', 'application/text')
                 self.end_headers()
                 self.wfile.write("欢迎今日话语！您的调用方式错误。")
+                log.warning("请求IP: {} 请求内容: 错误！调用方式错误！")
             elif self.path == '/text':
                 self.send_response(200)
                 self.send_header('Content-type', 'application/text')
@@ -66,10 +67,10 @@ def start_server(port):
                 self.wfile.write(core.handle_td_request(self, query_params))
             else:
                 response_data = {
-                    'status': '404',
+                    'status': '500',
                     'msg': '失败'
                 }
-                self.send_response(404)
+                self.send_response(500)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode())
