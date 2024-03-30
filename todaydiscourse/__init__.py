@@ -63,7 +63,7 @@ def start_server(port):
     configure_json_file()
     server_port = read_port_from_json()
 
-    log.info(f"今日话语已在 http://localhost:{server_port} 上启动，请参阅官方文档以查看如何调用。")
+    log.info(f"🎉恭喜您！今日话语已在 http://localhost:{server_port} 上启动，请参阅官方文档以查看如何调用。")
 
     try:
         with socketserver.TCPServer(("", server_port), Handler) as httpd:
@@ -77,8 +77,8 @@ def start_server(port):
 def start():
     log.info("欢迎使用 TodayDiscourse 今日话语")
     log.info("开发团队: XingchenOpenSource 星辰开源")
-    log.info("团队地址: https://github.com/XingchenOpenSource")
     log.info("项目地址: https://github.com/XingchenOpenSource/TodayDiscourse")
+    log.info("官方文档: https://xingchenopensource.github.io/apis/todaydiscourse/")
     start_server(read_port_from_json())
 
 if __name__ == '__main__':
