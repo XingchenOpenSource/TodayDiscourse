@@ -7,7 +7,7 @@ import json
 current_file_path = os.path.abspath(__file__)
 current_directory = os.path.dirname(current_file_path)
 # JSON文件路径
-json_file_path = os.path.join(current_directory, 'settings.json')
+json_file_path = 'settings.json'
 
 default_data = {
     'port': 8080
@@ -60,15 +60,10 @@ def start_server(port):
                 self.end_headers()
                 self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode())
 
-    log.info("欢迎使用 TodayDiscourse 今日话语")
-    log.info("开发团队: XingchenOpenSource 星辰开源")
-    log.info("团队地址: https://github.com/XingchenOpenSource")
-    log.info("项目地址: https://github.com/XingchenOpenSource/TodayDiscourse")
-
     configure_json_file()
     server_port = read_port_from_json()
 
-    log.info(f"今日话语已在http://localhost:{server_port}上启动，请参阅官方文档以查看如何调用。")
+    log.info(f"今日话语已在 http://localhost:{server_port} 上启动，请参阅官方文档以查看如何调用。")
 
     try:
         with socketserver.TCPServer(("", server_port), Handler) as httpd:
@@ -80,6 +75,10 @@ def start_server(port):
 
 # start函数
 def start():
+    log.info("欢迎使用 TodayDiscourse 今日话语")
+    log.info("开发团队: XingchenOpenSource 星辰开源")
+    log.info("团队地址: https://github.com/XingchenOpenSource")
+    log.info("项目地址: https://github.com/XingchenOpenSource/TodayDiscourse")
     start_server(read_port_from_json())
 
 if __name__ == '__main__':
