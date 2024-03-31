@@ -6,8 +6,8 @@
 请前往[官方文档](https://xinghetechnology.github.io/apis/todaydiscourse/)查看。
 
 ## 调用
-默认访问 localhost:8000 获取今日话语
-您也可以访问settings.json自行修改端口号
+默认访问 localhost:8000 获取今日话语  
+您也可以访问settings.json自行修改端口号  
 更多高阶用法，请前往[官方文档](https://xinghetechnology.github.io/apis/todaydiscourse/)
 
 ## 鸣谢
