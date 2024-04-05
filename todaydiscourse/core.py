@@ -1,4 +1,4 @@
-from . import config
+from todaydiscourse import config
 import os
 import json
 import random

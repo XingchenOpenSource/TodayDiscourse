@@ -1,6 +1,6 @@
 import os
 import json
-from . import log
+from todaydiscourse import log
 
 default_data = {
     "host": "0.0.0.0",

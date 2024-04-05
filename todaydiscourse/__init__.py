@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from . import log, core, config
+from todaydiscourse import log, core, config
 
 app = Flask(__name__)
 
