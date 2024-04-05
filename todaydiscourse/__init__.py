@@ -8,14 +8,14 @@ def index():
     log.warning(f"请求IP: {request.remote_addr} 请求内容: 错误！调用方式错误！")
     return "欢迎来到 TodayDiscourse 今日话语！", 200
 
-@app.route('/text', methods=['GET'])
+@app.route('/text/', methods=['GET'])
 def text_endpoint():
     log.warning(f"请求IP: {request.remote_addr} 请求内容: 文本")
     result = core.get_discourse()
     text = result.get('content', 0)
     return text, 200, {'Content-Type': 'text/plain'}
 
-@app.route('/json', methods=['GET'])
+@app.route('/json/', methods=['GET'])
 def json_endpoint():
     log.warning(f"请求IP: {request.remote_addr} 请求内容: JSON")
     response_data = core.get_discourse()
