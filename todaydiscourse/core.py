@@ -3,11 +3,9 @@ import os
 import json
 import random
 
-current_file_path = os.path.abspath(__file__)
-current_directory = os.path.dirname(current_file_path)
-directory = config.get_discourse_path()
 
-def get_discourse():
+def get_discourse(path):
+    directory = config.get_discourse_path(path)
     json_files = [file for file in os.listdir(directory) if file.endswith('.json')]
     discourse_file = random.choice(json_files)
     with open(os.path.join(directory, discourse_file), 'r', encoding='utf-8') as file:

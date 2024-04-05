@@ -2,14 +2,14 @@ import os
 import json
 from todaydiscourse import log
 
-default_data = {
-    "host": "0.0.0.0",
-    "port": 8080,
-    "path": "discourse"
-}
+default_data = '''{\n
+    "host": "0.0.0.0",\n
+    "port": 8080,\n
+    "path": "discourse"\n
+}'''
 
-def get_config():
-    json_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')
+def get_config(path):
+    json_file_path = path+'/'+'settings.json'
     if not os.path.exists(json_file_path):
         with open(json_file_path, 'w') as json_file:
             json.dump(default_data, json_file)
@@ -29,18 +29,23 @@ def get_config():
                 log.warning("配置文件中缺少'host'字段，使用默认值。")
                 data['host'] = default_data['host']
 
-json_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')
-def get_config_port():
+            if 'path' not in data:
+                log.warning("配置文件中缺少'path'字段，使用默认值。")
+                data['path'] = default_data['path']
+def get_config_port(path):
+    json_file_path = path+'/'+'settings.json'
     with open(json_file_path, 'r') as json_file:
         data = json.load(json_file)
         return data.get('port', 0)
 
-def get_config_host():
+def get_config_host(path):
+    json_file_path = path+'/'+'settings.json'
     with open(json_file_path, 'r') as json_file:
         data = json.load(json_file)
         return data.get('host', 0)
     
-def get_discourse_path():
+def get_discourse_path(path):
+    json_file_path = path+'/'+'settings.json'
     with open(json_file_path, 'r') as json_file:
         data = json.load(json_file)
         return data.get('path', 0)
