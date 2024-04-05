@@ -1,0 +1,29 @@
+name: Build Canary
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+    - name: Build code
+      run: |
+        pip install pyinstaller
+        cd todaydiscourse
+        pyinstaller -F __init__.py
+    - name: Publish package
+      uses: actions/upload-artifact@v4
+      with:
+        name: Windows-Canary
+        path: dist/todaydiscourse.exe
+        if-no-files-found: error
