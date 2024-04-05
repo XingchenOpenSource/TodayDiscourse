@@ -25,5 +25,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Windows-Canary
-        path: dist/todaydiscourse.exe
+        path: D:\a\TodayDiscourse\TodayDiscourse\todaydiscourse\dist\__init__.exe
         if-no-files-found: error
