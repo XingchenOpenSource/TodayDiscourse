@@ -24,4 +24,4 @@ def get_discourse():
             'date': selected_data.get('date')
         }
 
-    return json.dumps(final_data, ensure_ascii=False).encode()
+    return final_data

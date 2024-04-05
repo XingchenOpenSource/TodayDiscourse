@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
     log.warning(f"请求IP: {request.remote_addr} 请求内容: 错误！调用方式错误！")
-    return "欢迎来到 TodayDiscourse 今日话语！", 405
+    return "欢迎来到 TodayDiscourse 今日话语！", 200
 
 @app.route('/text/', methods=['GET'])
 def text_endpoint():
@@ -27,8 +27,8 @@ def start():
     config.get_config()
     server_port = config.get_config_port()
     server_host = config.get_config_host()
-    app.run(host=server_host, port=server_port, threaded=True)
     log.info(f"🎉恭喜您！今日话语已在 http://localhost:{server_port} 上启动，请参阅官方文档以查看如何调用。")
+    app.run(host=server_host, port=server_port, threaded=True)
 
 if __name__ == '__main__':
     start()
