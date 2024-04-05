@@ -3,8 +3,9 @@ import json
 from . import log
 
 default_data = {
-    'host': '0.0.0.0',
-    'port': 8080
+    "host": "0.0.0.0",
+    "port": 8080,
+    "path": "discourse"
 }
 
 def get_config():
@@ -38,3 +39,8 @@ def get_config_host():
     with open(json_file_path, 'r') as json_file:
         data = json.load(json_file)
         return data.get('host', 0)
+    
+def get_discourse_path():
+    with open(json_file_path, 'r') as json_file:
+        data = json.load(json_file)
+        return data.get('path', 0)
