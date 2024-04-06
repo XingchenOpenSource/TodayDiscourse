@@ -24,10 +24,16 @@ def json_endpoint():
 
 @app.route("/post/", methods=['POST'])
 def post_discourse():
-    content = request.values.get("content")
-    category = request.values.get("category")
-    user = request.values.get("user")
-    return jsonify(core.post_discourse(os.getcwd(), category, content, user))
+    log.info(f"请求IP: {request.remote_addr} 请求内容: 添加语录")
+    token = config.get_config_token(os.getcwd())
+    if request.values.get("token") == token:
+        content = request.values.get("content")
+        category = request.values.get("category")
+        user = request.values.get("user")
+        return jsonify(core.post_discourse(os.getcwd(), category, content, user))
+    elif request.values.get("token") != token:
+        return "token 错误！", 403
+    log.warning("token 错误！")
     
 def start():
     log.info("欢迎使用 TodayDiscourse 今日话语")
