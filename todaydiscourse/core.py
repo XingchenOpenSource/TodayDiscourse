@@ -7,7 +7,7 @@ import time
 
 def get_discourse(path):
     # 使用config模块获取语录数据所在的目录
-    directory = config.get_discourse_path(path)
+    directory = config.get_config_path(path)
     # 获取该目录下所有语录文件的列表
     json_files = [file for file in os.listdir(directory) if file.endswith('.json')]
     # 随机选择一个语录文件
@@ -40,7 +40,7 @@ def post_discourse(path, category, content, user):
         "date": time.strftime("%Y-%m-%d", time.localtime())
     }
     # 获取用于存储语录的目标目录
-    discourse_directory = config.get_discourse_path(path)
+    discourse_directory = config.get_config_path(path)
     new_filename = f"{category}.json"
     # 写入新语录
     with open(os.path.join(discourse_directory, new_filename), 'w', encoding='utf-8') as file:

@@ -2,5 +2,6 @@
     "host": "0.0.0.0",
     "port": 8080,
     "token": "TESTTOKEN",
-    "path": "text"
+    "path": "text",
+    "web_path": "/discourse/"
 }

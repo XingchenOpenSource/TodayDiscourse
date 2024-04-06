@@ -49,9 +49,15 @@ def get_config_token(path):
     with open(json_file_path, 'r') as json_file:
         data = json.load(json_file)
         return data.get('token', 0)
+    
+def get_config_path(path):
+    json_file_path = path+'/'+'settings.json'
+    with open(json_file_path, 'r') as json_file:
+        data = json.load(json_file)
+        return data.get('path', 0)
 
 def get_discourse_path(path):
     json_file_path = path+'/'+'settings.json'
     with open(json_file_path, 'r') as json_file:
         data = json.load(json_file)
-        return data.get('path', 0)
+        return data.get('web_path', 0)
