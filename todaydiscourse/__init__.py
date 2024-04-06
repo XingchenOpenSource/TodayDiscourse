@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from todaydiscourse import log, core, config
+from . import log, core, config
 import os
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def text_endpoint():
     log.info(f"请求IP: {request.remote_addr} 请求内容: 文本")
     result = core.get_discourse(os.getcwd())
     text = result.get('content', 0)
-    return text, 200, {'Content-Type': 'text/plain'}
+    return text, 200
 
 @app.route('/json/', methods=['GET'])
 def json_endpoint():
@@ -22,6 +22,13 @@ def json_endpoint():
     response_data = core.get_discourse(os.getcwd())
     return jsonify(response_data), 200
 
+@app.route("/post/", methods=['POST'])
+def post_discourse():
+    content = request.values.get("content")
+    category = request.values.get("category")
+    user = request.values.get("user")
+    return jsonify(core.post_discourse(os.getcwd(), category, content, user))
+    
 def start():
     log.info("欢迎使用 TodayDiscourse 今日话语")
     log.info("开发团队: XingchenOpenSource 星辰开源")

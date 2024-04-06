@@ -13,3 +13,4 @@ __pycache__/
 # due to using tox and pytest
 .tox
 .cache
+example/log/2024-04-06.log
