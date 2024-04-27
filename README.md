@@ -8,10 +8,10 @@
 随后，在命令行中执行以下命令：
 ```bash
 pip install todaydiscourse
-cd example
 ```
-随后，执行下面的命令启动服务器：
+然后，下载本仓库并解压，在终端进入解压目录，执行下面的命令启动服务器：
 ```bash
+cd example
 todaydiscourse
 ```
 此时，您已成功启动在8080端口启动服务器。
@@ -19,7 +19,7 @@ todaydiscourse
 ## 调用
 默认访问 localhost:8000 获取今日话语  
 您也可以访问settings.json自行修改端口号  
-更多高阶用法，请前往[官方文档](https://xingchenopensource.github.io/apis/todaydiscourse/)
+更多高阶用法，请前往[官方文档](https://xinghaiopensource.github.io/apis/todaydiscourse/)
 
 ## 鸣谢
 感谢这些本项目的贡献者，您们都是好样的！
