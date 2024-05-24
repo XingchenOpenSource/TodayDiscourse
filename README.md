@@ -1,4 +1,4 @@
-> [!WARN]
+> [!WARNING]  
 > 此项目已停止维护，请前往yeying-xingchen/poetry-moment项目使用同款功能。
 # 今日话语-TodayDiscourse
 ## 简介

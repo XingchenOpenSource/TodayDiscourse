@@ -34,23 +34,11 @@ def post_discourse():
     elif request.values.get("token") != token:
         return "token 错误！", 403
     log.warning("token 错误！")
-    
-def tools_start():
-    log.info("欢迎使用 TodayDiscourse 今日话语")
-    log.info("开发团队: XingchenOpenSource 星辰开源")
-    log.info("项目地址: https://github.com/XingchenOpenSource/TodayDiscourse")
-    log.info("官方文档: https://xingchenopensource.github.io/apis/todaydiscourse/")
-    config.get_config(os.getcwd())
-    server_port = config.get_config_port(os.getcwd())
-    server_host = config.get_config_host(os.getcwd())
-    log.info(f"🎉恭喜您！今日话语已在 http://localhost:{server_port} 上启动，请参阅官方文档以查看如何调用。")
-    app.run(host=server_host, port=server_port, threaded=True)
 
 def start():
     log.info("欢迎使用 TodayDiscourse 今日话语")
-    log.info("开发团队: XingchenOpenSource 星辰开源")
-    log.info("项目地址: https://github.com/XingchenOpenSource/TodayDiscourse")
-    log.info("官方文档: https://xingchenopensource.github.io/apis/todaydiscourse/")
+    log.info("开发团队: Xinghai-OSC 星海码队")
+    log.info("项目地址: https://github.com/xinghai-osc/todaydiscourse")
     config.get_config(os.getcwd())
     server_port = config.get_config_port(os.getcwd())
     server_host = config.get_config_host(os.getcwd())
